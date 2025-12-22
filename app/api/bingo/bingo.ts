@@ -245,6 +245,8 @@ const actions = [
   "appears on Epstein flight logs",
   "has a sex tape leaked",
   "has a deep sea submarine implosion",
+  "dies in an orgy",
+  "is caught with a prostitute",
   "dies in a private jet crash",
   "dies in a helicopter crash",
   "dies in a yacht accident",
@@ -261,8 +263,8 @@ const actions = [
   "gets caught in a Ponzi scheme",
   "gets caught in a crypto scam",
   "gets caught in a pyramid scheme",
+  "commits a hate crime",
   "gets caught committing securities fraud",
-  "gets caught committing Medicare fraud",
   "gets caught committing insurance fraud",
   "gets caught committing credit card fraud",
   "gets caught committing identity theft",
@@ -280,6 +282,7 @@ const actions = [
   "gets caught using insider information",
   "gets caught manipulating stock prices",
   "gets caught short selling illegally",
+  "gets caught running a crypto scam",
   "gets caught in a pump and dump scheme",
   "gets caught running an illegal gambling operation",
   "gets caught running an illegal casino",
@@ -306,7 +309,7 @@ const actions = [
   "gets caught committing murder",
   "gets caught committing manslaughter",
   "gets caught committing kidnapping",
-  "gets caught committing hostage taking",
+  "gets caught in a hostage situation",
 ];
 
 interface Person {
