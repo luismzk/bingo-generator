@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useRef } from "react";
+import Link from "next/link";
 import BingoGrid from "./components/BingoGrid";
 
 export default function Home() {
@@ -78,6 +79,12 @@ export default function Home() {
         <p className='text-gray-300 text-lg sm:text-xl md:text-2xl max-w-2xl mx-auto leading-relaxed'>
           Create your personalized bingo card for the new year!
         </p>
+        <Link
+          href='/disclaimer'
+          className='inline-block mt-4 text-sm text-gray-400 hover:text-yellow-400 underline transition-colors'
+        >
+          ⚠️ Disclaimer
+        </Link>
       </div>
 
       {!showGrid ? (
@@ -131,6 +138,15 @@ export default function Home() {
           </div>
         </div>
       )}
+      
+      <footer className='mt-12 text-center'>
+        <Link
+          href='/disclaimer'
+          className='text-sm text-gray-500 hover:text-yellow-400 underline transition-colors'
+        >
+          Disclaimer - All content is fictional and randomly generated
+        </Link>
+      </footer>
     </main>
   );
 }

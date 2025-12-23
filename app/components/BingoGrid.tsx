@@ -19,7 +19,7 @@ const BingoGrid = forwardRef<HTMLDivElement, BingoGridProps>(
           grid.push(
             <div
               key={i}
-              className='aspect-square bg-red-600 border-2 border-gray-600 flex items-center justify-center p-2 text-center text-white font-bold text-sm sm:text-base md:text-lg transition-all duration-200 hover:bg-red-500'
+              className='bg-red-600 border-2 border-gray-600 flex items-center justify-center p-2 text-center text-white font-bold text-sm sm:text-base md:text-lg transition-all duration-200 hover:bg-red-500 h-full'
             >
               <span className='break-words'>FREE</span>
             </div>
@@ -28,7 +28,7 @@ const BingoGrid = forwardRef<HTMLDivElement, BingoGridProps>(
           grid.push(
             <div
               key={i}
-              className='aspect-square bg-gray-800 border-2 border-gray-600 flex items-center justify-center p-2 text-center text-gray-100 text-xs sm:text-sm md:text-base transition-all duration-200 hover:bg-gray-700 cursor-pointer'
+              className='bg-gray-800 border-2 border-gray-600 flex items-center justify-center p-2 text-center text-gray-100 text-xs sm:text-sm md:text-base transition-all duration-200 hover:bg-gray-700 cursor-pointer h-full'
             >
               <span className='break-words leading-tight'>
                 {squares[squareIndex] || ""}
@@ -45,7 +45,7 @@ const BingoGrid = forwardRef<HTMLDivElement, BingoGridProps>(
       <div className='w-full max-w-2xl mx-auto p-4'>
         <div
           ref={ref}
-          className='grid grid-cols-5 gap-1 sm:gap-2 md:gap-3 bg-gray-900 p-2 sm:p-4 rounded-lg shadow-2xl'
+          className='grid grid-cols-5 gap-1 sm:gap-2 md:gap-3 bg-gray-900 p-2 sm:p-4 rounded-lg shadow-2xl grid-auto-rows-fr'
         >
           {createGrid()}
         </div>
