@@ -1,7 +1,5 @@
 // People with titles (require a company)
 const titledPeople = [
-  "The President of",
-  "The Vice President of",
   "The CEO of",
   "The CFO of",
   "The COO of",
@@ -353,6 +351,135 @@ const companies = [
   "a VC Firm",
 ];
 
+// Government positions (require a country)
+const politicians = [
+  "The President of",
+  "The Vice President of",
+  "The Prime Minister of",
+  "The Chancellor of",
+  "The Governor of",
+  "The Mayor of",
+  "The Secretary of State of",
+  "The Minister of Defense of",
+  "The Minister of Finance of",
+  "The Minister of Foreign Affairs of",
+  "The Attorney General of",
+  "The Chief Justice of",
+  "The Speaker of the House of",
+  "The Senate Majority Leader of",
+  "The Senate Minority Leader of",
+  "The House Majority Leader of",
+  "The House Minority Leader of",
+  "The Secretary of Defense of",
+  "The Secretary of Treasury of",
+  "The Secretary of Homeland Security of",
+];
+
+const countries = [
+  "the United States",
+  "China",
+  "Russia",
+  "India",
+  "Brazil",
+  "Japan",
+  "Germany",
+  "France",
+  "United Kingdom",
+  "Italy",
+  "South Korea",
+  "Canada",
+  "Australia",
+  "Mexico",
+  "Spain",
+  "Indonesia",
+  "Saudi Arabia",
+  "Turkey",
+  "Argentina",
+  "South Africa",
+  "Egypt",
+  "Poland",
+  "Thailand",
+  "Vietnam",
+  "Pakistan",
+  "Bangladesh",
+  "Nigeria",
+  "Philippines",
+  "Iran",
+  "Iraq",
+  "Israel",
+  "Palestine",
+  "Ukraine",
+  "North Korea",
+  "Venezuela",
+  "Cuba",
+  "Syria",
+  "Afghanistan",
+  "Myanmar",
+  "Belarus",
+  "Zimbabwe",
+  "Sudan",
+  "Yemen",
+  "Libya",
+  "Somalia",
+  "Eritrea",
+  "Turkmenistan",
+  "Uzbekistan",
+  "Kazakhstan",
+  "Azerbaijan",
+  "Armenia",
+  "Georgia",
+  "Moldova",
+  "Romania",
+  "Bulgaria",
+  "Greece",
+  "Portugal",
+  "Netherlands",
+  "Belgium",
+  "Switzerland",
+  "Austria",
+  "Sweden",
+  "Norway",
+  "Denmark",
+  "Finland",
+  "Ireland",
+  "New Zealand",
+  "Singapore",
+  "Malaysia",
+  "Taiwan",
+  "Hong Kong",
+  "Chile",
+  "Peru",
+  "Colombia",
+  "Ecuador",
+  "Bolivia",
+  "Paraguay",
+  "Uruguay",
+  "Guatemala",
+  "Honduras",
+  "El Salvador",
+  "Nicaragua",
+  "Costa Rica",
+  "Panama",
+  "Jamaica",
+  "Haiti",
+  "Dominican Republic",
+  "Trinidad and Tobago",
+  "Kenya",
+  "Ethiopia",
+  "Tanzania",
+  "Ghana",
+  "Morocco",
+  "Algeria",
+  "Tunisia",
+  "Lebanon",
+  "Jordan",
+  "Kuwait",
+  "Qatar",
+  "United Arab Emirates",
+  "Oman",
+  "Bahrain",
+];
+
 const actions = [
   "gets arrested for driving under the influence",
   "gets arrested for possession of a weapon",
@@ -446,13 +573,14 @@ const actions = [
 
 interface Person {
   name: string;
-  isTitle: boolean;
+  type: "titled" | "politician" | "named";
 }
 
 function getRandomPerson(): Person {
   const allPeople = [
-    ...titledPeople.map(name => ({ name, isTitle: true })),
-    ...namedPeople.map(name => ({ name, isTitle: false })),
+    ...titledPeople.map(name => ({ name, type: "titled" as const })),
+    ...politicians.map(name => ({ name, type: "politician" as const })),
+    ...namedPeople.map(name => ({ name, type: "named" as const })),
   ];
   return allPeople[Math.floor(Math.random() * allPeople.length)];
 }
@@ -461,11 +589,18 @@ function generateBingoPhrase(): string {
   const person = getRandomPerson();
   const action = actions[Math.floor(Math.random() * actions.length)];
   
-  // If it's a title, always include a company
-  if (person.isTitle) {
+  // If it's a corporate title, always include a company
+  if (person.type === "titled") {
     const company = companies[Math.floor(Math.random() * companies.length)];
     return `${person.name} ${company} ${action}`;
-  } else {
+  } 
+  // If it's a politician, always include a country
+  else if (person.type === "politician") {
+    const country = countries[Math.floor(Math.random() * countries.length)];
+    return `${person.name} ${country} ${action}`;
+  } 
+  // If it's a named person, no pairing needed
+  else {
     return `${person.name} ${action}`;
   }
 }
