@@ -43,7 +43,7 @@ export default function Disclaimer() {
 
           <div className='bg-gray-900 rounded-lg p-6 border-l-4 border-green-500'>
             <p className='text-center text-lg'>
-              <strong className='text-green-400'>TL;DR:</strong> This is fake. It's all fake. Everything is randomly generated nonsense. Have fun, but don't take it seriously. 🎲
+              <strong className='text-green-400'>TL;DR:</strong> {`This is fake. It's all fake. Everything is randomly generated nonsense. Have fun, but don't take it seriously. 🎲`}
             </p>
           </div>
         </div>
