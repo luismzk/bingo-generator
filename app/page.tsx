@@ -56,7 +56,7 @@ export default function Home() {
           const url = URL.createObjectURL(blob);
           const link = document.createElement("a");
           link.href = url;
-          link.download = `2025-bingo-card-${Date.now()}.png`;
+          link.download = `2026-bingo-card-${Date.now()}.png`;
           document.body.appendChild(link);
           link.click();
           document.body.removeChild(link);
@@ -74,7 +74,7 @@ export default function Home() {
     <main className='min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 flex flex-col items-center justify-center p-4 sm:p-6 md:p-8'>
       <div className='text-center mb-8 sm:mb-12'>
         <h1 className='text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-4 sm:mb-6 tracking-tight'>
-          2025 Bingo Generator
+          2026 Bingo Generator
         </h1>
         <p className='text-gray-300 text-lg sm:text-xl md:text-2xl max-w-2xl mx-auto leading-relaxed'>
           Create your personalized bingo card for the new year!

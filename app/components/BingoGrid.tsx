@@ -51,7 +51,7 @@ const BingoGrid = forwardRef<HTMLDivElement, BingoGridProps>(
         </div>
         {/* Title for the saved image */}
         <div className='text-center mt-4'>
-          <h2 className='text-2xl font-bold text-white'>2025 Bingo Card</h2>
+          <h2 className='text-2xl font-bold text-white'>2026 Bingo Card</h2>
         </div>
       </div>
     );

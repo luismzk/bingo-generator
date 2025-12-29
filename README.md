@@ -1,4 +1,4 @@
-# 2025 Bingo Generator
+# 2026 Bingo Generator
 
 A NextJS application that generates custom 5x5 bingo cards with a dark theme and mobile-responsive design.
 

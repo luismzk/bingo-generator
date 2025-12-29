@@ -480,7 +480,138 @@ const countries = [
   "Bahrain",
 ];
 
-const actions = [
+const sports = [
+  "soccer",
+  "football",
+  "basketball",
+  "baseball",
+  "hockey",
+  "tennis",
+  "golf",
+  "rugby",
+  "cricket",
+  "volleyball",
+  "swimming",
+  "boxing",
+  "MMA",
+  "racing",
+  "cycling",
+  "skiing",
+  "surfing",
+  "wrestling",
+  "e-sports",
+  "poker",
+];
+
+const religions = [
+  "Buddhist",
+  "Muslim",
+  "Hindu",
+  "Sikh",
+  "Jain",
+  "Taoist",
+  "Shinto",
+  "Pastafarian",
+  "Jedi",
+  "Scientologist",
+  "Mormon",
+  "Jehovah's Witness",
+  "Quaker",
+  "Amish",
+  "Rastafarian",
+];
+
+const famousPeopleToAspireTo = [
+  // Sports
+  "Messi",
+  "LeBron",
+  "Michael Jordan",
+  "Tiger Woods",
+  "Tom Brady",
+  "Serena Williams",
+  "Roger Federer",
+  "Cristiano Ronaldo",
+  "Kobe Bryant",
+  "Muhammad Ali",
+  "Pelé",
+  "Diego Maradona",
+  "Wayne Gretzky",
+  "Babe Ruth",
+  "Jack Nicklaus",
+  "Usain Bolt",
+  "Michael Phelps",
+  "Stephen Curry",
+  // Military Leaders & Conquerors
+  "Napoleon",
+  "Alexander the Great",
+  "Julius Caesar",
+  "Genghis Khan",
+  "Hannibal",
+  "George Washington",
+  "Patton",
+  "Eisenhower",
+  "Rommel",
+  "Sun Tzu",
+  // Historical Figures & Leaders
+  "Einstein",
+  "Leonardo da Vinci",
+  "Churchill",
+  "Gandhi",
+  "Martin Luther King Jr.",
+  "Nelson Mandela",
+  "Lincoln",
+  "Roosevelt",
+  "Kennedy",
+  "Cleopatra",
+  "Joan of Arc",
+  "Shakespeare",
+  "Mozart",
+  "Beethoven",
+  "Picasso",
+  "Van Gogh",
+  "Galileo",
+  "Newton",
+  "Darwin",
+  "Tesla",
+  "Edison",
+  "Curie",
+  "Hawking",
+];
+
+const performanceEnhancementDrugs = [
+  "steroids",
+  "HGH",
+  "EPO",
+  "testosterone",
+  "Viagra",
+  "Cialis",
+  "Adderall",
+  "Ritalin",
+  "Modafinil",
+  "creatine",
+  "protein powder",
+  "pre-workout",
+  "energy drinks",
+  "caffeine pills",
+  "beta blockers",
+  "diuretics",
+  "blood doping",
+  "human growth hormone",
+  "anabolic steroids",
+  "Viagra",
+  "Cialis",
+  "Levitra",
+  "Stendra",
+  "Staxyn",
+  "Viagra",
+  "blue pills",
+  "little blue pills",
+  "performance enhancers",
+  "PEDs",
+  "banned substances",
+];
+
+const negativeActions = [
   "gets arrested for driving under the influence",
   "gets arrested for possession of a weapon",
   "gets arrested for possession of a controlled substance",
@@ -569,6 +700,30 @@ const actions = [
   "gets caught committing manslaughter",
   "gets caught committing kidnapping",
   "gets caught in a hostage situation",
+  "admits to taking {drug}",
+];
+
+const positiveActionTemplates = [
+  "buys a {sport} club",
+  "becomes a {religion}",
+  "wants to become the next {famous}",
+  "buys a {sport} team",
+  "invests in a {sport} franchise",
+  "becomes a {religion} monk",
+  "converts to {religion}",
+  "joins the {religion} faith",
+  "aspires to be the next {famous}",
+  "dreams of being the next {famous}",
+  "wants to follow in {famous}'s footsteps",
+  "aims to become the next {famous}",
+  "hopes to be the next {famous}",
+  "strives to become the next {famous}",
+  "wants to emulate {famous}",
+  "buys a professional {sport} team",
+  "acquires a {sport} club",
+  "purchases a {sport} franchise",
+  "becomes owner of a {sport} team",
+  "invests heavily in {sport}",
 ];
 
 interface Person {
@@ -585,9 +740,41 @@ function getRandomPerson(): Person {
   return allPeople[Math.floor(Math.random() * allPeople.length)];
 }
 
+function getRandomAction(): string {
+  // 50/50 chance of positive or negative
+  const isPositive = Math.random() < 0.5;
+  
+  if (isPositive) {
+    const template = positiveActionTemplates[Math.floor(Math.random() * positiveActionTemplates.length)];
+    
+    // Replace placeholders (handle multiple occurrences)
+    let action = template;
+    while (action.includes("{sport}")) {
+      action = action.replace("{sport}", sports[Math.floor(Math.random() * sports.length)]);
+    }
+    while (action.includes("{religion}")) {
+      action = action.replace("{religion}", religions[Math.floor(Math.random() * religions.length)]);
+    }
+    while (action.includes("{famous}")) {
+      action = action.replace("{famous}", famousPeopleToAspireTo[Math.floor(Math.random() * famousPeopleToAspireTo.length)]);
+    }
+    
+    return action;
+  } else {
+    let action = negativeActions[Math.floor(Math.random() * negativeActions.length)];
+    
+    // Replace drug placeholder if present (handle multiple occurrences)
+    while (action.includes("{drug}")) {
+      action = action.replace("{drug}", performanceEnhancementDrugs[Math.floor(Math.random() * performanceEnhancementDrugs.length)]);
+    }
+    
+    return action;
+  }
+}
+
 function generateBingoPhrase(): string {
   const person = getRandomPerson();
-  const action = actions[Math.floor(Math.random() * actions.length)];
+  const action = getRandomAction();
   
   // If it's a corporate title, always include a company
   if (person.type === "titled") {

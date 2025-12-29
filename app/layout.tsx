@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "2025 Bingo Generator",
-  description: "Generate your custom bingo cards for 2025",
+  title: "2026 Bingo Generator",
+  description: "Generate your custom bingo cards for 2026",
 };
 
 export default function RootLayout({
